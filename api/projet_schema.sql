@@ -1,0 +1,22 @@
+CREATE SCHEMA `projet` DEFAULT CHARACTER SET utf8mb4 ;
+
+CREATE TABLE `projet`.`users` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `login` VARCHAR(45) NOT NULL,
+  `password` VARCHAR(255) NOT NULL,
+  `firstname` VARCHAR(45) NULL,
+  `lastname` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `login` (`login` ASC));
+
+
+CREATE TABLE `projet`.`messages` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `created` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `modified` TIMESTAMP NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_id` INT NOT NULL,
+  `content` TEXT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `user_id` (`user_id` ASC));
